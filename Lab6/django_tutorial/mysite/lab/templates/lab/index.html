@@ -1,0 +1,32 @@
+<h3>
+    {{ header }}
+</h3>
+<p>
+    Page Path: {% url 'index' %}
+</p>
+
+<form action="{% url 'temp' %}" method="post">
+    {% csrf_token %}
+    <label>Source:</label>
+    <br />
+    <select name="source_city">
+        <option value="New York City, NY">New York City, NY</option>
+        <option value="Buffalo, NY">Buffalo, NY</option>
+        <option value="Miami, FL">Miami, FL</option>
+        <option value="Chicago, IL">Chicago, IL</option>
+        <option vlaue="Newark, NJ">Newark, NJ</option>
+    </select>
+    <br /><br />
+
+    <label>Destination:</label>
+    <br />
+    <select name="destination_city">
+        <option value="New York City, NY">New York City, NY</option>
+        <option value="Buffalo, NY">Buffalo, NY</option>
+        <option value="Miami, FL">Miami, FL</option>
+        <option value="Chicago, IL">Chicago, IL</option>
+        <option vlaue="Newark, NJ">Newark, NJ</option>
+    </select>
+    <br /><br />
+    <input type="submit" value="Let's Go!">
+</form> 

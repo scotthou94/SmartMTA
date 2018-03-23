@@ -1,0 +1,340 @@
+
+Poky (Yocto Project Reference Distro) 1.7.2 edison ttyMFD2
+
+edison login: root
+Password:
+root@edison:~# cd ~/Lab2
+root@edison:~/Lab2# ls
+bluetoothTemp.py  firebaseDemo.py
+root@edison:~/Lab2# python bluetoothTemp.py
+Traceback (most recent call last):
+  File "bluetoothTemp.py", line 6, in <module>
+    tool = pexpect.spawn('gatttool -b ' + bluetooth_adr + ' --interactive')
+  File "/usr/lib/python2.7/site-packages/pexpect/pty_spawn.py", line 198, in __init__
+    self._spawn(command, args, preexec_fn, dimensions)
+  File "/usr/lib/python2.7/site-packages/pexpect/pty_spawn.py", line 271, in _spawn
+    'executable: %s.' % self.command)
+pexpect.exceptions.ExceptionPexpect: The command was not found or was not executable: gatttool.
+(failed reverse-i-search)`pat': vim /etc/wpa_supplicant/w^C_supplicant.conf
+root@edison:~/Lab2# export PATH=$PATH:~/bluez-5.24/attrib/
+root@edison:~/Lab2#
+root@edison:~/Lab2# python bluetoothTemp.py
+Preparing to connect. You might need to press the side button...
+ char-write-req 0x2b 0x01
+
+Command Failed: Disconnected
+
+^CTraceback (most recent call last):
+  File "bluetoothTemp.py", line 21, in <module>
+    rval = tool.readline()
+  File "/usr/lib/python2.7/site-packages/pexpect/spawnbase.py", line 460, in readline
+    index = self.expect([self.crlf, self.delimiter])
+  File "/usr/lib/python2.7/site-packages/pexpect/spawnbase.py", line 327, in expect
+    timeout, searchwindowsize, async_)
+  File "/usr/lib/python2.7/site-packages/pexpect/spawnbase.py", line 355, in expect_list
+    return exp.expect_loop(timeout)
+  File "/usr/lib/python2.7/site-packages/pexpect/expect.py", line 96, in expect_loop
+    incoming = spawn.read_nonblocking(spawn.maxread, timeout)
+  File "/usr/lib/python2.7/site-packages/pexpect/pty_spawn.py", line 456, in read_nonblocking
+    r, w, e = select_ignore_interrupts([self.child_fd], [], [], timeout)
+  File "/usr/lib/python2.7/site-packages/pexpect/utils.py", line 143, in select_ignore_interrupts
+    return select.select(iwtd, owtd, ewtd, timeout)
+KeyboardInterrupt
+root@edison:~/Lab2#
+root@edison:~/Lab2# gatttool -b 00:10:18:01:20:E3 --interactive
+[00:10:18:01:20:E3][LE]> connect
+Attempting to connect to 00:10:18:01:20:E3
+Error: connect: Device or resource busy (16)
+[00:10:18:01:20:E3][LE]> connect
+Attempting to connect to 00:10:18:01:20:E3
+Error: connect: Device or resource busy (16)
+[00:10:18:01:20:E3][LE]> exit
+root@edison:~/Lab2#
+root@edison:~/Lab2# bluetoothctl
+[NEW] Controller 58:A8:39:00:20:D0 edison [default]
+[NEW] Device 00:10:18:01:20:E3 WICED Sense Kit
+[NEW] Device 00:10:18:01:20:FD WICED Sense Kit
+[bluetooth]# scan on
+Discovery started
+[NEW] Device 52:BD:79:D1:8F:32 52-BD-79-D1-8F-32
+[NEW] Device 2C:41:A1:07:60:0E Bose QuietComfort 35
+[NEW] Device 79:4B:D2:94:40:C4 79-4B-D2-94-40-C4
+[NEW] Device 7B:41:20:43:64:CD 7B-41-20-43-64-CD
+[NEW] Device 53:06:4F:D3:4F:D5 53-06-4F-D3-4F-D5
+[NEW] Device 74:48:D4:C9:16:C8 74-48-D4-C9-16-C8
+[NEW] Device 54:CB:BD:6E:DA:86 54-CB-BD-6E-DA-86
+[NEW] Device 40:07:FF:41:B8:10 40-07-FF-41-B8-10
+[NEW] Device 66:54:15:BB:DB:D7 66-54-15-BB-DB-D7
+[NEW] Device 8C:85:90:22:AE:73 8C-85-90-22-AE-73
+[NEW] Device 53:8E:F4:61:6C:CF 53-8E-F4-61-6C-CF
+[NEW] Device 4E:49:A3:0C:BB:A6 4E-49-A3-0C-BB-A6
+[NEW] Device 6C:40:08:A4:85:AD 6C-40-08-A4-85-AD
+[NEW] Device 5F:EB:ED:26:22:93 5F-EB-ED-26-22-93
+[NEW] Device 8C:85:90:34:73:D2 8C-85-90-34-73-D2
+[NEW] Device E0:AC:CB:60:10:C9 E0-AC-CB-60-10-C9
+[NEW] Device 75:FD:2C:DB:6B:36 75-FD-2C-DB-6B-36
+[NEW] Device 7B:94:86:39:73:E6 7B-94-86-39-73-E6
+[NEW] Device 34:36:3B:6C:46:5D 34-36-3B-6C-46-5D
+[CHG] Controller 58:A8:39:00:20:D0 Discovering: yes
+[CHG] Device 52:BD:79:D1:8F:32 RSSI: -84
+[NEW] Device 7C:BE:FD:C2:74:8C 7C-BE-FD-C2-74-8C
+[NEW] Device 64:76:BA:B1:F9:DF 64-76-BA-B1-F9-DF
+[NEW] Device 64:87:D4:A8:37:6A 64-87-D4-A8-37-6A
+[NEW] Device 5C:14:BC:19:99:70 5C-14-BC-19-99-70
+[NEW] Device 8C:85:90:5B:52:72 8C-85-90-5B-52-72
+[NEW] Device 6B:AF:E5:A3:95:6E 6B-AF-E5-A3-95-6E
+[NEW] Device 6B:77:9C:C6:36:ED 6B-77-9C-C6-36-ED
+[CHG] Device 34:36:3B:6C:46:5D RSSI: -72
+[NEW] Device 6F:DC:D5:49:87:C1 6F-DC-D5-49-87-C1
+[NEW] Device 46:29:3C:E9:19:8A 46-29-3C-E9-19-8A
+[NEW] Device 59:96:2F:F8:E1:89 59-96-2F-F8-E1-89
+[NEW] Device 74:63:43:A9:D0:DD 74-63-43-A9-D0-DD
+[NEW] Device 63:D4:7E:03:74:C2 63-D4-7E-03-74-C2
+[NEW] Device 6A:45:32:FF:D2:52 6A-45-32-FF-D2-52
+[CHG] Device 6F:DC:D5:49:87:C1 RSSI: -79
+[NEW] Device 5D:68:76:FE:F3:A7 5D-68-76-FE-F3-A7
+[NEW] Device 60:6A:12:DA:79:8B 60-6A-12-DA-79-8B
+[NEW] Device 64:96:26:B9:E4:21 64-96-26-B9-E4-21
+[NEW] Device 46:19:07:8D:95:4B 46-19-07-8D-95-4B
+[CHG] Device 66:54:15:BB:DB:D7 RSSI: -86
+[NEW] Device 7C:6A:E7:0F:C1:54 7C-6A-E7-0F-C1-54
+[CHG] Device 5C:14:BC:19:99:70 RSSI: -82
+[NEW] Device 5E:78:46:5F:D0:75 5E-78-46-5F-D0-75
+[NEW] Device 52:42:60:7F:68:71 52-42-60-7F-68-71
+[NEW] Device 66:2A:A6:32:09:E9 66-2A-A6-32-09-E9
+[NEW] Device 6B:DF:10:EC:0B:14 6B-DF-10-EC-0B-14
+[CHG] Device 5F:EB:ED:26:22:93 RSSI: -74
+[CHG] Device E0:AC:CB:60:10:C9 RSSI: -82
+[NEW] Device 04:52:C7:79:17:EA Bose QuietComfort 35
+[NEW] Device 8C:85:90:37:86:CA 8C-85-90-37-86-CA
+[NEW] Device 7C:71:32:28:22:62 7C-71-32-28-22-62
+[NEW] Device 53:25:B6:C8:57:DA 53-25-B6-C8-57-DA
+[NEW] Device 4D:1C:A7:67:5D:DE 4D-1C-A7-67-5D-DE
+[NEW] Device 63:98:D1:49:2F:0A 63-98-D1-49-2F-0A
+[NEW] Device 00:09:A7:14:DE:49 Beoplay H4
+[CHG] Device 34:36:3B:6C:46:5D RSSI: -61
+[NEW] Device 68:64:4B:4D:51:C2 68-64-4B-4D-51-C2
+[NEW] Device 72:A2:51:50:6F:89 72-A2-51-50-6F-89
+[NEW] Device 77:66:D6:E9:C0:09 77-66-D6-E9-C0-09
+[CHG] Device 66:54:15:BB:DB:D7 RSSI: -77
+[NEW] Device 7F:FD:1B:95:15:CA 7F-FD-1B-95-15-CA
+[CHG] Device 5F:EB:ED:26:22:93 RSSI: -86
+[NEW] Device 60:C0:10:98:A0:2D 60-C0-10-98-A0-2D
+[NEW] Device 52:13:8F:4E:FD:43 52-13-8F-4E-FD-43
+[NEW] Device 79:1B:DC:C9:01:8B 79-1B-DC-C9-01-8B
+[CHG] Device 46:19:07:8D:95:4B RSSI: -80
+[CHG] Device E0:AC:CB:60:10:C9 RSSI: -73
+[NEW] Device 5E:DA:2F:F8:AE:B8 5E-DA-2F-F8-AE-B8
+[CHG] Device 66:54:15:BB:DB:D7 RSSI: -90
+[NEW] Device 62:EF:90:35:96:B1 62-EF-90-35-96-B1
+[CHG] Device 2C:41:A1:07:60:0E RSSI: -81
+[NEW] Device 7C:D1:C3:7A:5D:07 7C-D1-C3-7A-5D-07
+[CHG] Device 7B:41:20:43:64:CD RSSI: -90
+[CHG] Device 7C:71:32:28:22:62 RSSI: -65
+[CHG] Device 52:BD:79:D1:8F:32 RSSI: -75
+[bluetooth]# scan off
+[CHG] Device 7C:D1:C3:7A:5D:07 RSSI is nil
+[CHG] Device 62:EF:90:35:96:B1 RSSI is nil
+[CHG] Device 5E:DA:2F:F8:AE:B8 RSSI is nil
+[CHG] Device 79:1B:DC:C9:01:8B RSSI is nil
+[CHG] Device 52:13:8F:4E:FD:43 RSSI is nil
+[CHG] Device 60:C0:10:98:A0:2D RSSI is nil
+[CHG] Device 7F:FD:1B:95:15:CA RSSI is nil
+[CHG] Device 77:66:D6:E9:C0:09 RSSI is nil
+[CHG] Device 72:A2:51:50:6F:89 RSSI is nil
+[CHG] Device 68:64:4B:4D:51:C2 RSSI is nil
+[CHG] Device 00:09:A7:14:DE:49 RSSI is nil
+[CHG] Device 63:98:D1:49:2F:0A RSSI is nil
+[CHG] Device 4D:1C:A7:67:5D:DE RSSI is nil
+[CHG] Device 53:25:B6:C8:57:DA RSSI is nil
+[CHG] Device 7C:71:32:28:22:62 RSSI is nil
+[CHG] Device 8C:85:90:37:86:CA RSSI is nil
+[CHG] Device 04:52:C7:79:17:EA RSSI is nil
+[CHG] Device 6B:DF:10:EC:0B:14 RSSI is nil
+[CHG] Device 66:2A:A6:32:09:E9 RSSI is nil
+[CHG] Device 52:42:60:7F:68:71 RSSI is nil
+[CHG] Device 5E:78:46:5F:D0:75 RSSI is nil
+[CHG] Device 7C:6A:E7:0F:C1:54 RSSI is nil
+[CHG] Device 46:19:07:8D:95:4B RSSI is nil
+[CHG] Device 64:96:26:B9:E4:21 RSSI is nil
+[CHG] Device 60:6A:12:DA:79:8B RSSI is nil
+[CHG] Device 5D:68:76:FE:F3:A7 RSSI is nil
+[CHG] Device 6A:45:32:FF:D2:52 RSSI is nil
+[CHG] Device 63:D4:7E:03:74:C2 RSSI is nil
+[CHG] Device 74:63:43:A9:D0:DD RSSI is nil
+[CHG] Device 59:96:2F:F8:E1:89 RSSI is nil
+[CHG] Device 46:29:3C:E9:19:8A RSSI is nil
+[CHG] Device 6F:DC:D5:49:87:C1 RSSI is nil
+[CHG] Device 6B:77:9C:C6:36:ED RSSI is nil
+[CHG] Device 6B:AF:E5:A3:95:6E RSSI is nil
+[CHG] Device 8C:85:90:5B:52:72 RSSI is nil
+[CHG] Device 5C:14:BC:19:99:70 RSSI is nil
+[CHG] Device 64:87:D4:A8:37:6A RSSI is nil
+[CHG] Device 64:76:BA:B1:F9:DF RSSI is nil
+[CHG] Device 7C:BE:FD:C2:74:8C RSSI is nil
+[CHG] Device 34:36:3B:6C:46:5D RSSI is nil
+[CHG] Device 7B:94:86:39:73:E6 RSSI is nil
+[CHG] Device 75:FD:2C:DB:6B:36 RSSI is nil
+[CHG] Device E0:AC:CB:60:10:C9 RSSI is nil
+[CHG] Device 8C:85:90:34:73:D2 RSSI is nil
+[CHG] Device 5F:EB:ED:26:22:93 RSSI is nil
+[CHG] Device 6C:40:08:A4:85:AD RSSI is nil
+[CHG] Device 4E:49:A3:0C:BB:A6 RSSI is nil
+[CHG] Device 53:8E:F4:61:6C:CF RSSI is nil
+[CHG] Device 8C:85:90:22:AE:73 RSSI is nil
+[CHG] Device 66:54:15:BB:DB:D7 RSSI is nil
+[CHG] Device 40:07:FF:41:B8:10 RSSI is nil
+[CHG] Device 54:CB:BD:6E:DA:86 RSSI is nil
+[CHG] Device 74:48:D4:C9:16:C8 RSSI is nil
+[CHG] Device 53:06:4F:D3:4F:D5 RSSI is nil
+[CHG] Device 7B:41:20:43:64:CD RSSI is nil
+[CHG] Device 79:4B:D2:94:40:C4 RSSI is nil
+[CHG] Device 2C:41:A1:07:60:0E RSSI is nil
+[CHG] Device 52:BD:79:D1:8F:32 RSSI is nil
+Discovery stopped
+[CHG] Controller 58:A8:39:00:20:D0 Discovering: no
+[bluetooth]# pair 00:10:18:01:20:E3
+Attempting to pair with 00:10:18:01:20:E3
+Failed to pair: org.bluez.Error.ConnectionAttemptFailed
+[bluetooth]# connect 00:10:18:01:20:E3
+Attempting to connect to 00:10:18:01:20:E3
+[CHG] Device 00:10:18:01:20:E3 Paired: yes
+Failed to connect: org.bluez.Error.Failed
+[CHG] Device 00:10:18:01:20:E3 Connected: no
+[CHG] Device 00:10:18:01:20:E3 Connected: yes
+[CHG] Device 00:10:18:01:20:E3 RSSI: -83
+[CHG] Device 00:10:18:01:20:E3 RSSI: -70
+[CHG] Device 00:10:18:01:20:E3 Connected: no
+[CHG] Device 00:10:18:01:20:E3 Connected: yes
+[bluetooth]# disconnect 00:10:18:01:20:E3
+Attempting to disconnect from 00:10:18:01:20:E3
+Successful disconnected
+[CHG] Device 00:10:18:01:20:E3 Connected: no
+[CHG] Device 00:10:18:01:20:E3 RSSI: -54
+[CHG] Device 00:10:18:01:20:E3 RSSI: -80
+[CHG] Device 00:10:18:01:20:E3 RSSI: -61
+[CHG] Device 00:10:18:01:20:E3 RSSI: -53
+[bluetooth]# exit
+[DEL] Controller 58:A8:39:00:20:D0 edison [default]
+root@edison:~/Lab2# gatttool -b 00:10:18:01:20:E3 --interactive
+[00:10:18:01:20:E3][LE]> connect
+Attempting to connect to 00:10:18:01:20:E3
+Connection successful
+[00:10:18:01:20:E3][LE]> exit
+root@edison:~/Lab2#
+
+####################################################################################
+####################################################################################
+####################################################################################
+
+root@edison:~/Lab2# python bluetoothTemp.py
+Preparing to connect. You might need to press the side button...
+Connection successful
+
+[00:10:18:01:20:E3][LE]> char-write-req 0x2b 0x01
+
+Characteristic value was written successfully
+
+Notification handle = 0x002a value: 0b fe ff 00 00 5d 00 b5 17 8c 5b 99 21 44 05 bc 01 df ee
+
+Notification handle = 0x002a value: 0b ff ff fc ff 56 00 43 05 f1 06 e7 0a 67 0b 9a fc 7e ef
+
+Notification handle = 0x002a value: 0b ff ff fc ff 5a 00 22 02 35 ec b2 00 7b 0e 84 f8 d4 f1
+
+Notification handle = 0x002a value: 0b 00 00 f6 ff 56 00 d8 01 f2 0f 6e 03 eb 0e bd f7 15 f3
+
+Notification handle = 0x002a value: 0b 00 00 fc ff 58 00 02 fc 19 ea b1 03 fb 0e d7 f6 c3 f5
+
+Notification handle = 0x002a value: 0b fb ff f9 ff 5f 00 70 04 7b fd 31 06 1e 0f 38 f5 e3 f7
+
+Notification handle = 0x002a value: 0b fa ff f7 ff 52 00 0d 00 a3 07 6a 01 80 0f 90 f4 5e f8
+
+Notification handle = 0x002a value: 0b fc ff f8 ff 59 00 b0 ff f7 01 53 01 71 0f 70 f4 b8 f8
+
+Notification handle = 0x002a value: 0b fc ff f7 ff 5b 00 ed 04 d9 01 a6 02 ea 0f 55 f3 89 f9
+
+Notification handle = 0x002a value: 34 b5 01 5c 27 2a 01
+
+Notification handle = 0x002a value: 0b f7 ff f3 ff 57 00 92 ff c2 03 5b fe 44 12 8f ed 8a fb
+
+Notification handle = 0x002a value: 0b f9 ff f6 ff 59 00 ce fd 35 02 7a 02 da 11 14 ee a8 fb
+
+Notification handle = 0x002a value: 0b fc ff f6 ff 59 00 9d ff 3e fe ec 02 4c 11 ce ee c3 fb
+
+Notification handle = 0x002a value: 0b fc ff f7 ff 58 00 c0 fe ce fe 79 01 de 10 53 ef 05 fc
+
+Notification handle = 0x002a value: 0b fa ff f8 ff 5c 00 53 fe b6 ff ea 03 74 10 f4 ef 47 fc
+
+Notification handle = 0x002a value: 0b fc ff f8 ff 56 00 9b ff a0 01 10 01 6b 10 ec ef 46 fc
+
+Notification handle = 0x002a value: 0b fb ff f9 ff 56 00 c0 ff ee 01 af fe 69 10 01 f0 38 fc
+
+Notification handle = 0x002a value: 0b f5 ff f6 ff 4a 00 0a fc bc 09 fb f2 df 0e 8d f4 c9 fa
+
+Notification handle = 0x002a value: 0b 07 00 f9 ff 46 00 d5 fd 03 06 cf e7 e3 0e 8b f9 dd f2
+
+Notification handle = 0x002a value: 34 b5 01 5d 27 2a 01
+
+Notification handle = 0x002a value: 0b 01 00 fd ff 5a 00 27 fa 88 fc 89 fc 90 04 b8 02 f7 ed
+
+Notification handle = 0x002a value: 0b 05 00 fe ff 58 00 86 fb ac 01 a6 fe ab 01 3e 05 4c ee
+
+Notification handle = 0x002a value: 0b 06 00 00 00 59 00 69 fe c2 fe 95 fc b8 ff 70 06 70 ee
+
+Notification handle = 0x002a value: 0b 05 00 ff ff 58 00 cc fe d0 fd 75 fd cd fe d3 06 4a ee
+
+Notification handle = 0x002a value: 0b 04 00 00 00 58 00 31 db 6c df ad f2 e3 fa 5f 07 97 ed
+
+Notification handle = 0x002a value: 0b 01 00 00 00 58 00 35 00 1c ff f5 00 06 fb 10 07 22 ed
+
+Notification handle = 0x002a value: 0b 02 00 02 00 58 00 de 08 68 f6 51 03 51 fb e1 06 06 ed
+
+Notification handle = 0x002a value: 0b 04 00 00 00 59 00 42 00 43 ff d4 00 11 fd 49 07 99 ee
+
+Notification handle = 0x002a value: 0b 02 00 02 00 59 00 23 00 32 ff e3 00 0d fd 41 07 99 ee
+
+Notification handle = 0x002a value: 34 b5 01 5d 27 29 01
+
+Notification handle = 0x002a value: 0b 02 00 02 00 58 00 25 00 2d ff ee 00 13 fd 3a 07 9a ee
+
+Notification handle = 0x002a value: 0b 02 00 02 00 58 00 47 00 58 ff b7 00 14 fd 3e 07 92 ee
+
+Notification handle = 0x002a value: 0b 02 00 02 00 58 00 4c 00 58 ff 90 00 14 fd 35 07 92 ee
+
+Notification handle = 0x002a value: 0b 02 00 02 00 58 00 40 00 35 ff e6 00 01 fd 44 07 88 ee
+
+Notification handle = 0x002a value: 0b 02 00 03 00 59 00 5a 00 4d ff b0 00 0c fd 3f 07 93 ee
+
+Notification handle = 0x002a value: 0b 01 00 03 00 59 00 44 00 7f ff 85 00 0d fd 37 07 85 ee
+
+Notification handle = 0x002a value: 0b 03 00 02 00 59 00 17 f9 92 05 15 f9 fa fc 43 07 8c ee
+
+Notification handle = 0x002a value: 0b 04 00 02 00 58 00 fc 03 7c fc bc fa 87 fe fb 04 2b f1
+
+Notification handle = 0x002a value: 0b 02 00 02 00 59 00 4c 00 52 ff a9 00 93 fe da 04 46 f1
+
+Notification handle = 0x002a value: 34 b5 01 5e 27 29 01
+
+Notification handle = 0x002a value: 0b 02 00 02 00 58 00 6b 00 5f ff a3 00 02 fe e9 04 a1 f1
+
+Notification handle = 0x002a value: 0b 02 00 02 00 58 00 5e 00 74 ff 9b 00 01 fb e3 04 c7 f6
+
+Notification handle = 0x002a value: 0b 02 00 02 00 58 00 55 00 78 ff a2 00 ab ff b1 04 db f6
+
+Notification handle = 0x002a value: 0b 03 00 02 00 58 00 5b 00 58 ff 79 00 b3 01 22 04 0b f6
+
+Notification handle = 0x002a value: 0b 03 00 01 00 58 00 5d 00 7e ff 8a 00 db 02 99 03 2d f5
+
+Notification handle = 0x002a value: 0b 02 00 01 00 58 00 5c 00 79 ff b6 00 e3 02 9d 03 2a f5
+
+Notification handle = 0x002a value: 0b 02 00 02 00 58 00 5a 00 70 ff 86 00 d1 02 98 03 2e f5
+
+^CTraceback (most recent call last):
+  File "bluetoothTemp.py", line 17, in <module>
+    time.sleep(0.1)
+KeyboardInterrupt
+root@edison:~/Lab2# Notification handle = 0x002a value: 34 b5 01 5c 27 2a 01
+-sh: Notification: command not found
+root@edison:~/Lab2#
+root@edison:~/Lab2# Notification handle = 0x002a value: 0b f7 ff f3 ff 57 00 92 ff c2 03 5b fe 44 12 8f ed 8a fb^C
+root@edison:~/Lab2#

@@ -1,0 +1,35 @@
+<style>
+    #temperatureTable, #temperatureTable td {
+        border: 1px solid black;
+        padding: 4px;
+        font-family: Arial;
+    }
+</style>
+
+<table id="temperatureTable">
+    <tr>
+        <th>Type</th>
+        <th>City</th>
+        <th>Temperature (F)</th>
+    </tr>
+    <tr>
+        <td>Source</td>
+        <td>{{ source_city }}</td>
+        <td>{{ source_city_temp }}</td>
+    </tr>
+    <tr>
+        <td>Destination</td>
+        <td>{{ destination_city }}</td>
+        <td>{{ destination_city_temp }}</td>
+    </tr>
+</table>
+<div>
+    <iframe height="480" width="640" src="{% url 'showMap' %}"></iframe>
+</div>
+<div>
+    <pre>
+    {{ directions }}
+    </pre>
+</div>
+
+

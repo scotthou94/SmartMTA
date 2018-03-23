@@ -1,0 +1,50 @@
+1. (10 pts) Get a list of local trains (ie, 1 trains) passing through the 96th station. Print the trip IDs.
+    Query for all trains where the routeId = 1
+    AND Direction is SOUTH
+    AND are currently at a station NORTH of 96th Street
+
+2. (10 pts) Repeat the same for express trains (ie, 2 or 3 trains). Print the trip IDs.
+    Same as above but with routeId = 2, 3
+
+3. (5 pts) After you reach 96th from your source station find & display the trip ID of the earliest local train reaching the 96th station.
+    a. Get the next train arriving to your source station
+    b. Get the time it will arrive at 96th street (using futureStops property)
+    c. *After* this time stamp, find the next local train to arrive at 96th street
+        i. Read from item (1) where futureStop is 96th street and time is greater than your arrival time to 96th street
+4. (5 pts) Repeat 3. for express trains.
+    a. Same as above
+    b. Same as above
+    c. After this time stamp, find the next express to arrive at 96th street
+    d. Read from item (2) where futureStop is 96th street and time is greater than your arrival time to 96th
+
+5. (10 pts) Print time taken to reach 42nd in for the trains found in steps 3 and 4. ("time" = time from source station to destination station)
+    a. Read futureStops of the three trains above and find when they arrive to 42nd street from source station
+
+6a. (10 pts) Print whether user should "Switch to Express Train" or "Stay on the Local Train".
+    a. If the express train that reaches 96th street first (Step 4) will arrive before local train in Step 3 then switch
+    b. otherwise stay
+
+6b. (5 pts) Send a message to subscribers whether to "Switch to Express Train" or "Stay on the Local Train".
+    a. Connect to SNS service and send message to everyone on the topic
+
+7. (5 pts) Error Handling
+    a. Topic already exists
+    b. Invalid phone number
+    c. Table already exists
+    d. Invalid menu options
+    e. Invalid station ID
+
+8. (10 pts) Generalize such that you could select any source station (on the local 1 train line) North of the 96th Street stop while heading downtown.
+Additionally, allow for a journey uptown from 42nd Street to any stop North of 96th Street.
+Essentially, you will choose whether or not to get on the express at 42nd Street. If you choose to get on the express, you will have to get off at 96th Street.
+    a. Check if source is valid
+    b. If 42nd street
+        i. Check for the next local arriving
+        ii. check time to reach destination
+        iii. Check for the next express arriving
+        iv. Check for the time arriving to 96th street
+        v. Check for the next local at 96th street
+        vi. Calculate total time to reach destination
+
+9. (10 pts) Subscribing to the message feed. Add a user's phone number to your subscription service, and ensure the user gets the message.
+    a. Not sure how this is difference from Step 6b
