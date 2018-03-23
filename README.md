@@ -2,6 +2,8 @@
 
 ## Members
 * Murshed J. Ahmed (mja2196)
+* Shijun Hou (sh3658)
+* Robert Fea (rf2638)
 
 ### How do I get set up? ###
 
